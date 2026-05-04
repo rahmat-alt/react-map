@@ -11,7 +11,7 @@ const map = L.map("map").setView([-0.9471, 100.4172], 13);
 // 2. BASEMAP
 // =======================
 L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-  attribution: "&copy; OpenStreetMap &copy; CARTO",
+  attribution: "&copy; OpenStreetMap & CARTO",
 }).addTo(map);
 
 // =======================
@@ -22,7 +22,7 @@ const url = "/data/cafe.geojson";
 // =======================
 // 4. ELEMENT
 // =======================
-const btn = document.getElementById("btnLoad");
+const btnLoad = document.getElementById("btnLoad");
 const btnHeatmap = document.getElementById("heatmap");
 const btnPoint = document.getElementById("togglePoint");
 const input = document.getElementById("search");
@@ -34,7 +34,9 @@ const detailContent = document.getElementById("detailContent");
 let geojsonLayer = null;
 let glowLayer = null;
 let heatLayer = null;
+
 let isHeatmapVisible = false;
+let isPointVisible = true;
 
 // =======================
 // 6. LOAD DATA
@@ -50,9 +52,9 @@ function loadData() {
     .then((data) => {
       if (!data.features) return;
 
+      // Hapus layer lama
       if (geojsonLayer) map.removeLayer(geojsonLayer);
       if (glowLayer) map.removeLayer(glowLayer);
-      if (heatLayer) map.removeLayer(heatLayer);
 
       const filtered = data.features.filter((f) => {
         if (!keyword) return true;
@@ -60,52 +62,36 @@ function loadData() {
       });
 
       // =======================
-      // 🌟 GLOW LAYER (STRONG)
+      // 🌟 GLOW
       // =======================
       glowLayer = L.layerGroup();
 
       filtered.forEach((f) => {
         const latlng = [f.geometry.coordinates[1], f.geometry.coordinates[0]];
 
-        // OUTER GLOW (besar & soft)
-        L.circleMarker(latlng, {
-          radius: 30,
-          color: "#00ffff",
-          weight: 0,
-          fillOpacity: 0.02,
-        }).addTo(glowLayer);
-
-        // MID GLOW
-        L.circleMarker(latlng, {
-          radius: 20,
-          color: "#00ffff",
-          weight: 0,
-          fillOpacity: 0.06,
-        }).addTo(glowLayer);
-
-        // INNER GLOW
-        L.circleMarker(latlng, {
-          radius: 12,
-          color: "#00ffff",
-          weight: 0,
-          fillOpacity: 0.12,
-        }).addTo(glowLayer);
+        L.circleMarker(latlng, { radius: 30, fillOpacity: 0.02 }).addTo(
+          glowLayer,
+        );
+        L.circleMarker(latlng, { radius: 20, fillOpacity: 0.06 }).addTo(
+          glowLayer,
+        );
+        L.circleMarker(latlng, { radius: 12, fillOpacity: 0.12 }).addTo(
+          glowLayer,
+        );
       });
 
-      glowLayer.addTo(map);
+      if (isPointVisible) glowLayer.addTo(map);
 
       // =======================
-      // 🔵 POINT (KECIL)
+      // 🔵 POINT
       // =======================
       geojsonLayer = L.geoJSON(filtered, {
         pointToLayer: (f, latlng) =>
           L.circleMarker(latlng, {
-            radius: 3, // 🔥 kecil banget
+            radius: 4,
             color: "#00ffff",
             fillColor: "#ffffff",
             fillOpacity: 1,
-            weight: 1,
-            className: "pulse-dot",
           }),
 
         onEachFeature: (feature, layer) => {
@@ -128,9 +114,8 @@ function loadData() {
           layer.on({
             mouseover: (e) => {
               e.target.setStyle({
-                color: "#ffff00",
-                fillColor: "#ffff00",
-                fillOpacity: 1,
+                color: "yellow",
+                fillColor: "yellow",
               });
             },
             mouseout: (e) => {
@@ -138,10 +123,12 @@ function loadData() {
             },
           });
         },
-      }).addTo(map);
+      });
+
+      if (isPointVisible) geojsonLayer.addTo(map);
 
       // =======================
-      // HEATMAP
+      // 🔥 HEATMAP
       // =======================
       const heatData = filtered.map((f) => {
         let weight = 1;
@@ -156,17 +143,9 @@ function loadData() {
       heatLayer = L.heatLayer(heatData, {
         radius: 45,
         blur: 30,
-        maxZoom: 17,
-        minOpacity: 0.6,
-        gradient: {
-          0.2: "blue",
-          0.4: "lime",
-          0.6: "yellow",
-          0.8: "orange",
-          1.0: "red",
-        },
       });
 
+      // fit bounds
       if (geojsonLayer.getBounds().isValid()) {
         map.fitBounds(geojsonLayer.getBounds());
       }
@@ -182,65 +161,38 @@ btnHeatmap?.addEventListener("click", () => {
 
   if (!isHeatmapVisible) {
     map.addLayer(heatLayer);
-    legend.addTo(map);
-    btnHeatmap.classList.replace("btn-secondary", "btn-success");
     isHeatmapVisible = true;
+    btnHeatmap.classList.replace("btn-secondary", "btn-success");
   } else {
     map.removeLayer(heatLayer);
-    map.removeControl(legend);
-    btnHeatmap.classList.replace("btn-success", "btn-secondary");
     isHeatmapVisible = false;
+    btnHeatmap.classList.replace("btn-success", "btn-secondary");
   }
 });
 
 // =======================
-// 8. TOGGLE TITIK
+// 8. TOGGLE POINT
 // =======================
 btnPoint?.addEventListener("click", () => {
   if (!geojsonLayer) return;
 
-  const visible = map.hasLayer(geojsonLayer);
-
-  if (visible) {
+  if (isPointVisible) {
     map.removeLayer(geojsonLayer);
     map.removeLayer(glowLayer);
-    btnPoint.classList.replace("btn-info", "btn-danger");
+    isPointVisible = false;
+    btnPoint.classList.replace("btn-secondary", "btn-danger");
   } else {
     map.addLayer(geojsonLayer);
     map.addLayer(glowLayer);
-    btnPoint.classList.replace("btn-danger", "btn-info");
+    isPointVisible = true;
+    btnPoint.classList.replace("btn-danger", "btn-secondary");
   }
 });
 
 // =======================
-// 9. LEGEND
+// 9. EVENT
 // =======================
-const legend = L.control({ position: "bottomleft" });
+btnLoad?.addEventListener("click", loadData);
 
-legend.onAdd = function () {
-  const div = L.DomUtil.create("div");
-
-  div.innerHTML = `
-    <div style="
-      background: rgba(30,30,30,0.9);
-      padding: 12px;
-      border-radius: 12px;
-      color: #fff;
-      font-size: 13px;
-    ">
-      <strong>Keterangan</strong>
-      <div><span style="background:blue;width:12px;height:12px;display:inline-block"></span> Rendah</div>
-      <div><span style="background:lime;width:12px;height:12px;display:inline-block"></span> Sedang</div>
-      <div><span style="background:yellow;width:12px;height:12px;display:inline-block"></span> Tinggi</div>
-      <div><span style="background:red;width:12px;height:12px;display:inline-block"></span> Sangat Tinggi</div>
-    </div>
-  `;
-  return div;
-};
-
-// =======================
-// 10. EVENT
-// =======================
-btn?.addEventListener("click", loadData);
-
+// load pertama
 loadData();
