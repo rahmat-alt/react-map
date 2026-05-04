@@ -1,0 +1,455 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "cafe.1",
+      "geometry": { "type": "Point", "coordinates": [100.365938, -0.9382175] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "1823664249",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "MENTAWAI SURF",
+        "address1": "Jalan Perintis Kemerdekaan, Jati Baru, Padang, Sumatera Barat, Sumatra, 25113",
+        "link_photo": null,
+        "wifi": "-",
+        "jam": "-",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.2",
+      "geometry": { "type": "Point", "coordinates": [100.4617036, -0.9160585] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "4099151315",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "Queen Cafe",
+        "address1": "Jalan FIB - Lingkar Luar Unand, Batu Busuak, Padang, Sumatera Barat, Sumatra, 25163",
+        "link_photo": null,
+        "wifi": "wlan",
+        "jam": "-",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.3",
+      "geometry": { "type": "Point", "coordinates": [100.3633179, -0.9339502] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "4401054594",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "Jooks juice bar",
+        "address1": "Jalan Kis Mangunsarkoro, Jati, Padang, Sumatera Barat, Sumatra, 2512",
+        "link_photo": null,
+        "wifi": "-",
+        "jam": "​​Senin-Minggu 11:00-21:00",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.4",
+      "geometry": { "type": "Point", "coordinates": [100.385637, -0.931419] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "4560953568",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "Dapur Mama",
+        "address1": "Jalan Raya Parak Jigarang, Anduring, Padang, Sumatera Barat, Sumatra, 25147",
+        "link_photo": null,
+        "wifi": "tidak",
+        "jam": "-",
+        "masakan": "regional"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.5",
+      "geometry": { "type": "Point", "coordinates": [100.386676, -0.930839] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "4560962336",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "Muezza Caffe",
+        "address1": "Jalan Raya Parak Jigarang, Anduring, Padang, Sumatera Barat, Sumatra, 25147",
+        "link_photo": null,
+        "wifi": "tidak",
+        "jam": "-",
+        "masakan": "Italia"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.6",
+      "geometry": { "type": "Point", "coordinates": [100.3853989, -0.9272789] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "4560976865",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "Caffetaria",
+        "address1": "Parit Indah, Anduring, Padang, Sumatera Barat",
+        "link_photo": null,
+        "wifi": "-",
+        "jam": "-",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.7",
+      "geometry": { "type": "Point", "coordinates": [100.394422, -0.9655321] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "4580386489",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "Skotang abak",
+        "address1": "Jalan Garun Lawas, Parak Laweh Pulau Air Nan Xx, Padang",
+        "link_photo": null,
+        "wifi": "-",
+        "jam": "-",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.8",
+      "geometry": { "type": "Point", "coordinates": [100.3595514, -0.9512445] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "4714447090",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "Makan Pangsit",
+        "address1": "Jalan M. Yamin, Belakang Tangsi, Padang, Sumatera Barat, Sumatra, 25117",
+        "link_photo": null,
+        "wifi": "-",
+        "jam": "-",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.9",
+      "geometry": { "type": "Point", "coordinates": [100.3761759, -0.9525206] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "4857548921",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "Bakso Barokah",
+        "address1": "Jalan Air Camar, Parak Gadang Timur, Padang, Sumatera Barat",
+        "link_photo": null,
+        "wifi": "-",
+        "jam": "-",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.10",
+      "geometry": { "type": "Point", "coordinates": [100.3545284, -0.9566902] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "5051178827",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "Lolito",
+        "address1": "Jalan Robert Wolter Monginsidi, Kampung Pondok, Padang",
+        "link_photo": null,
+        "wifi": "-",
+        "jam": null,
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.11",
+      "geometry": { "type": "Point", "coordinates": [100.3531525, -0.9551421] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "5051178833",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "Imbio Coffee",
+        "address1": "Jalan Samudra, Berok Nipah, Padang, Sumatera Barat",
+        "link_photo": null,
+        "wifi": "-",
+        "jam": "-",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.12",
+      "geometry": { "type": "Point", "coordinates": [100.3552506, -0.9578151] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "5051178837",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "El's coffee",
+        "address1": "Jalan Hayam Wuruk, Berok Nipah, Padang, Sumatera Barat",
+        "link_photo": null,
+        "wifi": "-",
+        "jam": "-",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.13",
+      "geometry": { "type": "Point", "coordinates": [100.3629725, -0.9624435] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "5051178838",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "DoReMi Terrace",
+        "address1": "Jalan Batang Arau, Pasa Gadang, Padang, Sumatera Barat",
+        "link_photo": null,
+        "wifi": "-",
+        "jam": "-",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.14",
+      "geometry": { "type": "Point", "coordinates": [100.286104, -0.7866653] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "5052373778",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "Roti'O",
+        "address1": "Jalan Bandara Internasional Minangkabau (BIM), Nagari Katapiang, Padang Pariaman, Sumatera Barat",
+        "link_photo": null,
+        "wifi": "-",
+        "jam": "-",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.15",
+      "geometry": { "type": "Point", "coordinates": [100.3670903, -0.9592539] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "5769889762",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "The Black Coffee",
+        "address1": "Jalan Pasar Mudik, Pasa Gadang, Padang, Sumatera Barat",
+        "link_photo": null,
+        "wifi": "-",
+        "jam": "-",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.16",
+      "geometry": { "type": "Point", "coordinates": [100.4089938, -0.9319662] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "6709149485",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "Dua Pintu Coffee Roastery",
+        "address1": "Jalan Dr. M. Hatta, Pasar Ambacang, Padang, Sumatera Barat",
+        "link_photo": null,
+        "wifi": "wlan",
+        "jam": "​​Senin-Minggu 10:00-23:00",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.17",
+      "geometry": { "type": "Point", "coordinates": [100.3546209, -0.9615454] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "6711367285",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "El's Café",
+        "address1": "Jalan Nipah, Berok Nipah, Padang, Sumatera Barat",
+        "link_photo": null,
+        "wifi": "-",
+        "jam": "-",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.18",
+      "geometry": { "type": "Point", "coordinates": [100.3608629, -0.956712] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "6836153585",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "El-Nino Coffee",
+        "address1": "Jalan Pondok , Belakang Pondok , Padang Selatan , 25211, Belakangpondok",
+        "link_photo": null,
+        "wifi": "-",
+        "jam": "​​Sel-Min 12:00-22:00",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.19",
+      "geometry": { "type": "Point", "coordinates": [100.3637604, -0.9299025] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "6853269839",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "Hotel Ibis",
+        "address1": "Jalan Taman Siswa, Rimbo Kaluang, Padang, Sumatera Barat,",
+        "link_photo": null,
+        "wifi": "-",
+        "jam": "-",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.20",
+      "geometry": { "type": "Point", "coordinates": [100.3508742, -0.8954539] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "6853284067",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "Warung 99",
+        "address1": "Jalan Prof. Dr. Hamka, Air Tawar Timur, Padang, Sumatera Barat",
+        "link_photo": null,
+        "wifi": "ya",
+        "jam": "-",
+        "masakan": "nasi goreng,Lontong"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.21",
+      "geometry": { "type": "Point", "coordinates": [100.37609, -0.945872] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "7861446898",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "Nutty Delic",
+        "address1": "Jalan Dokter Soetomo, Kubu Marapalam, Padang, Sumatera Barat",
+        "link_photo": null,
+        "wifi": "tidak",
+        "jam": "-",
+        "masakan": "susu almond"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.22",
+      "geometry": { "type": "Point", "coordinates": [100.3520015, -0.9383153] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "8420113117",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "Old Schol Cafe",
+        "address1": "Jalan Purus 3, Purus, Padang, Sumatera Barat",
+        "link_photo": null,
+        "wifi": "-",
+        "jam": "-",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.23",
+      "geometry": { "type": "Point", "coordinates": [100.3457175, -0.9061558] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "9103290117",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "Ado Kopi",
+        "address1": "Jln. Sumatera No.1, Ulak Karang, Kec. Padang Utara",
+        "link_photo": null,
+        "wifi": "wlan",
+        "jam": "​​Jumat-Rabu 14:00-22:00",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.24",
+      "geometry": { "type": "Point", "coordinates": [100.3693274, -0.9210254] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "9739092115",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "TanaKitchen",
+        "address1": "Alai Parak Kopi, Padang Utara, Kota Padang, Sumatera Barat, Ampang, Padang",
+        "link_photo": null,
+        "wifi": "-",
+        "jam": "-",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.25",
+      "geometry": { "type": "Point", "coordinates": [100.3559868, -0.8670962] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "10578999799",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "daffa vision",
+        "address1": "Bungo Pasang, Kec. Koto Tangah",
+        "link_photo": null,
+        "wifi": "-",
+        "jam": "-",
+        "masakan": "-"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cafe.26",
+      "geometry": { "type": "Point", "coordinates": [100.4647619, -0.912453] },
+      "geometry_name": "geom",
+      "properties": {
+        "osm_id": "13670759875",
+        "code": 2303,
+        "fclass": "cafe",
+        "name": "Kedai Ibuk 2",
+        "address1": "Jalan Lingkar Universitas Andalas, Batu Busuak, Padang, Sumatera Barat",
+        "link_photo": null,
+        "wifi": "tidak",
+        "jam": "-",
+        "masakan": "regional"
+      }
+    }
+  ],
+  "totalFeatures": 26,
+  "numberMatched": 26,
+  "numberReturned": 26,
+  "timeStamp": "2026-05-04T08:28:15.605Z",
+  "crs": {
+    "type": "name",
+    "properties": { "name": "urn:ogc:def:crs:EPSG::4326" }
+  }
+}
