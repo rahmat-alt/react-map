@@ -50,40 +50,62 @@ function loadData() {
     .then((data) => {
       if (!data.features) return;
 
-      // hapus layer lama
       if (geojsonLayer) map.removeLayer(geojsonLayer);
       if (glowLayer) map.removeLayer(glowLayer);
       if (heatLayer) map.removeLayer(heatLayer);
 
-      // filter
       const filtered = data.features.filter((f) => {
         if (!keyword) return true;
         return f.properties?.name?.toLowerCase().includes(keyword);
       });
 
       // =======================
-      // GLOW
+      // 🌟 GLOW LAYER (STRONG)
       // =======================
-      glowLayer = L.geoJSON(filtered, {
-        pointToLayer: (f, latlng) =>
-          L.circleMarker(latlng, {
-            radius: 14,
-            color: "#00ffff",
-            opacity: 0.25,
-            fillOpacity: 0,
-          }),
-      }).addTo(map);
+      glowLayer = L.layerGroup();
+
+      filtered.forEach((f) => {
+        const latlng = [f.geometry.coordinates[1], f.geometry.coordinates[0]];
+
+        // OUTER GLOW (besar & soft)
+        L.circleMarker(latlng, {
+          radius: 30,
+          color: "#00ffff",
+          weight: 0,
+          fillOpacity: 0.02,
+        }).addTo(glowLayer);
+
+        // MID GLOW
+        L.circleMarker(latlng, {
+          radius: 20,
+          color: "#00ffff",
+          weight: 0,
+          fillOpacity: 0.06,
+        }).addTo(glowLayer);
+
+        // INNER GLOW
+        L.circleMarker(latlng, {
+          radius: 12,
+          color: "#00ffff",
+          weight: 0,
+          fillOpacity: 0.12,
+        }).addTo(glowLayer);
+      });
+
+      glowLayer.addTo(map);
 
       // =======================
-      // TITIK
+      // 🔵 POINT (KECIL)
       // =======================
       geojsonLayer = L.geoJSON(filtered, {
         pointToLayer: (f, latlng) =>
           L.circleMarker(latlng, {
-            radius: 6,
+            radius: 3, // 🔥 kecil banget
             color: "#00ffff",
-            fillColor: "#00ffff",
-            fillOpacity: 0.9,
+            fillColor: "#ffffff",
+            fillOpacity: 1,
+            weight: 1,
+            className: "pulse-dot",
           }),
 
         onEachFeature: (feature, layer) => {
@@ -119,12 +141,11 @@ function loadData() {
       }).addTo(map);
 
       // =======================
-      // HEATMAP (🔥 SUDAH FIX)
+      // HEATMAP
       // =======================
       const heatData = filtered.map((f) => {
         let weight = 1;
 
-        // 🔥 LOGIKA BOBOT (biar tidak flat)
         if (f.properties.wifi === "wlan") weight += 2;
         if (f.properties.masakan !== "-") weight += 1;
         if (f.properties.jam && f.properties.jam !== "-") weight += 1;
@@ -137,7 +158,6 @@ function loadData() {
         blur: 30,
         maxZoom: 17,
         minOpacity: 0.6,
-
         gradient: {
           0.2: "blue",
           0.4: "lime",
@@ -147,9 +167,6 @@ function loadData() {
         },
       });
 
-      // =======================
-      // FIT BOUNDS
-      // =======================
       if (geojsonLayer.getBounds().isValid()) {
         map.fitBounds(geojsonLayer.getBounds());
       }
@@ -161,10 +178,7 @@ function loadData() {
 // 7. TOGGLE HEATMAP
 // =======================
 btnHeatmap?.addEventListener("click", () => {
-  if (!heatLayer) {
-    alert("Data belum dimuat!");
-    return;
-  }
+  if (!heatLayer) return alert("Data belum dimuat!");
 
   if (!isHeatmapVisible) {
     map.addLayer(heatLayer);
@@ -215,7 +229,6 @@ legend.onAdd = function () {
       font-size: 13px;
     ">
       <strong>Keterangan</strong>
-
       <div><span style="background:blue;width:12px;height:12px;display:inline-block"></span> Rendah</div>
       <div><span style="background:lime;width:12px;height:12px;display:inline-block"></span> Sedang</div>
       <div><span style="background:yellow;width:12px;height:12px;display:inline-block"></span> Tinggi</div>
@@ -230,5 +243,4 @@ legend.onAdd = function () {
 // =======================
 btn?.addEventListener("click", loadData);
 
-// load awal
 loadData();
