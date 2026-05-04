@@ -5,7 +5,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: "index.html",
-        map: "public/map.html",
       },
     },
   },
