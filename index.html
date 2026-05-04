@@ -1,260 +1,128 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- basic -->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- mobile metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
-    <!-- site metas -->
-    <title>Peserbaran Coffeeshop Kota Padang</title>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <!-- bootstrap css -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-    <!-- style css -->
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <!-- Responsive-->
-    <link rel="stylesheet" href="css/responsive.css" />
-    <!-- fevicon -->
-    <link rel="icon" href="images/fevicon.png" type="image/gif" />
-    <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css" />
-    <!-- Tweaks for older IEs-->
+    <meta charset="UTF-8" />
+    <title>Peta Leaflet</title>
+
     <link
-      rel="stylesheet"
-      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
-    />
-    <!-- owl stylesheets -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700,800&display=swap"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
-      media="screen"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      body {
+        margin: 0;
+      }
+
+      .container-flex {
+        display: flex;
+        height: 100vh;
+      }
+
+      #map {
+        width: 70%;
+      }
+
+      .sidebar {
+        width: 30%;
+        overflow-y: auto;
+        padding: 10px;
+        background: #f8f9fa;
+      }
+
+      table {
+        font-size: 13px;
+      }
+
+      /* 🔥 STYLE DETAIL */
+      #detailBox table td {
+        font-size: 13px;
+      }
+
+      #detailBox table tr:nth-child(odd) {
+        background: #f1f1f1;
+      }
+
+      #detailBox table td:first-child {
+        font-weight: 500;
+        width: 45%;
+      }
+    </style>
   </head>
+
   <body>
-    <!-- header section start -->
-    <div class="header_section header_bg">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
+    <button
+      name="heatmap"
+      id="heatmap"
+      type="button"
+      class="btn btn-secondary position-absolute"
+      style="z-index: 9999; margin-top: 100px; margin-left: 10px"
+    >
+      <i class="fa-solid fa-globe"></i>
+    </button>
+
+    <button
+      id="togglePoint"
+      class="btn btn-secondary position-absolute"
+      style="z-index: 9999; margin-top: 150px; margin-left: 10px"
+    >
+      <i class="fa-solid fa-location-dot"></i>
+    </button>
+
+    <div class="container-flex">
+      <!-- 🗺️ MAP -->
+      <div id="map"></div>
+      <!-- 📋 SIDEBAR -->
+      <div class="sidebar">
+        <h5>Filter Nama Coffeshop</h5>
+
+        <input
+          type="text"
+          id="search"
+          class="form-control mt-4 mb-4"
+          placeholder="Cari nama..."
+        />
+
+        <button id="btnLoad" class="btn btn-primary w-100 mb-3">
+          Tampilkan Coffeshop
         </button>
-      </nav>
-      <!-- banner section start -->
-      <div class="banner_section layout_padding">
-        <div id="main_slider" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-7">
-                    <div class="image_1">
-                      <img src="images/tkopi.png" style="border-radius: 12px" />
-                    </div>
-                  </div>
-                  <div class="col-md-5">
-                    <h1 class="banner_taital">Titik<br />Coffeeshop</h1>
-                    <p class="banner_text">
-                      Menampilkan lokasi coffeeshop dalam bentuk titik pada peta
-                      untuk memudahkan pencarian dan analisis lokasi secara
-                      detail.
-                    </p>
-                    <div class="contact_bt">
-                      <a href="./map.html">Jelajahi Peta</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div id="heatmap" class="carousel-item">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-7">
-                    <div class="image_1">
-                      <img
-                        src="images/theatmap.png"
-                        style="border-radius: 12px"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-md-5">
-                    <h1 class="banner_taital">Kepadatan <br />Coffeeshop</h1>
-                    <p class="banner_text">
-                      Visualisasi kepadatan coffeeshop menggunakan warna untuk
-                      melihat area dengan tingkat aktivitas rendah hingga
-                      tinggi.
-                    </p>
-                    <div class="contact_bt">
-                      <a href="contact.html">Jelajahi Peta</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a
-            class="carousel-control-prev"
-            href="#main_slider"
-            role="button"
-            data-slide="prev"
-          >
-            <i class="fa fa-angle-left"></i>
-          </a>
-          <a
-            class="carousel-control-next"
-            href="#main_slider"
-            role="button"
-            data-slide="next"
-          >
-            <i class="fa fa-angle-right"></i>
-          </a>
-        </div>
-      </div>
-      <!-- banner section end -->
-    </div>
-    <!-- header section end -->
-    <!-- cycle section start -->
-    <div class="cycle_section layout_padding">
-      <div class="container">
-        <div class="cycle_section_2 layout_padding">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="box_main">
-                <div class="image_2">
-                  <img src="images/titik.png" style="border-radius: 12px" />
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <h1 class="cycles_text">Titik Persebaran Coffeeshop</h1>
-              <p class="lorem_text">
-                Peta ini menampilkan lokasi setiap coffeeshop dalam bentuk
-                titik. Klik pada titik untuk melihat informasi detail seperti
-                nama, alamat, dan fasilitas yang tersedia.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="cycle_section_3 layout_padding">
-          <div class="row">
-            <div class="col-md-6">
-              <h1 class="cycles_text">Peta Kepadatan Coffeeshop</h1>
-              <p class="lorem_text">
-                Peta ini menunjukkan tingkat kepadatan coffeeshop di suatu area.
-                Semakin merah warnanya, semakin banyak coffeeshop di lokasi
-                tersebut. Warna biru menunjukkan jumlah yang lebih sedikit.
-              </p>
-            </div>
-            <div class="col-md-6">
-              <div class="box_main_3">
-                <div class="image_2">
-                  <img src="images/heatmap.png" style="border-radius: 12px" />
-                </div>
-              </div>
-            </div>
-          </div>
+
+        <!-- 🔥 DETAIL PANEL (SEPERTI GAMBAR) -->
+        <h6 class="mt-3">Detail Data</h6>
+        <div id="detailBox" class="border rounded p-2 bg-white">
+          <table class="table table-sm">
+            <tbody id="detailContent">
+              <tr>
+                <td colspan="2" class="text-center text-muted">
+                  Klik titik di peta
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
-    <!-- cycle section end -->
-    <!-- footer section start -->
-    <footer class="footer_section">
-      <div class="footer_inner">
-        <!-- Brand -->
 
-        <div class="footer_vdivider"></div>
+    <script type="module" src="/src/main.js"></script>
 
-        <!-- Nav -->
-        <nav class="footer_nav">
-          <a href="#">Home</a>
-          <a href="#main_slider">About</a>
-        </nav>
-
-        <div class="footer_vdivider"></div>
-
-        <!-- Contact -->
-        <div class="footer_contacts">
-          <div class="fc_item">
-            <div class="fc_icon"><i class="fa fa-map-marker"></i></div>
-            <div class="fc_text">
-              <strong>Address</strong>
-            </div>
-          </div>
-          <div class="fc_item">
-            <div class="fc_icon"><i class="fa fa-phone"></i></div>
-            <div class="fc_text"><strong>Phone</strong></div>
-          </div>
-          <div class="fc_item">
-            <div class="fc_icon"><i class="fa fa-envelope"></i></div>
-            <div class="fc_text"><strong>Email</strong></div>
-          </div>
-        </div>
-
-        <div class="footer_vdivider"></div>
-
-        <!-- Social -->
-        <div class="footer_social">
-          <a href="#"><i class="fa fa-facebook"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
-          <a href="#"><i class="fa fa-instagram"></i></a>
-          <a href="#"><i class="fa fa-youtube-play"></i></a>
-        </div>
-      </div>
-
-      <!-- Bottom bar -->
-      <div class="footer_bottom">
-        <p>&copy; 2026 <a href="#">Cycle Store</a>. All Rights Reserved.</p>
-        <div class="footer_bottom_links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Support</a>
-        </div>
-      </div>
-    </footer>
-    <!-- footer section end -->
-    <!-- Javascript files-->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery-3.0.0.min.js"></script>
-    <script src="js/plugin.js"></script>
-    <!-- sidebar -->
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/custom.js"></script>
-    <!-- javascript -->
-    <script src="js/owl.carousel.js"></script>
-    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-    <script>
-      function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px";
-      }
-
-      function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
-      }
-
-      $("#main").click(function () {
-        $("#navbarSupportedContent").toggleClass("nav-normal");
-      });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
