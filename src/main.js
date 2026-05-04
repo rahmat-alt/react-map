@@ -1,6 +1,6 @@
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import "leaflet.heat";
+import "leaflet.heat/dist/leaflet-heat.js";
 
 // =======================
 // 1. MAP
