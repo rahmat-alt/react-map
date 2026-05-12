@@ -12,6 +12,10 @@
     "vite": "^8.0.10"
   },
   "dependencies": {
+    "@deck.gl/core": "^9.3.2",
+    "@deck.gl/layers": "^9.3.2",
+    "@deck.gl/mapbox": "^9.3.2",
+    "@deck.gl/mesh-layers": "^9.3.2",
     "bootstrap-icons": "^1.13.1",
     "leaflet": "^1.9.4",
     "leaflet.heat": "^0.2.0",

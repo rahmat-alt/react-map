@@ -1,13 +1,6 @@
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 
-// import maplibregl from "maplibre-gl";
-// import "maplibre-gl/dist/maplibre-gl.css";
-
-// import * as THREE from "three";
-
-// import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-
 // =======================
 // MAP 3D
 // =======================
@@ -429,12 +422,17 @@ function loadData() {
 // BUILDING 3D
 // =======================
 map3d.on("load", () => {
+  // =======================
+  // BUILDING 3D
+  // =======================
+
   map3d.addLayer({
     id: "3d-buildings",
     source: "openmaptiles",
     "source-layer": "building",
     type: "fill-extrusion",
     minzoom: 15,
+
     paint: {
       "fill-extrusion-color": [
         "interpolate",
@@ -474,12 +472,45 @@ map3d.on("load", () => {
       ],
 
       "fill-extrusion-height": ["coalesce", ["get", "render_height"], 20],
+
       "fill-extrusion-base": ["coalesce", ["get", "render_min_height"], 0],
+
       "fill-extrusion-opacity": 0.9,
     },
   });
 
+  // =======================
+  // LOAD DATA
+  // =======================
+
   loadData();
+
+  // =======================
+  // KOORDINAT MASJID
+  // =======================
+
+  // =======================
+  // MODEL MASJID GLB
+  // =======================
+  // =======================
+  // MODEL MARKER 3D
+  // =======================
+
+  // container marker
+  const container = document.createElement("div");
+
+  container.style.width = "250px";
+  container.style.height = "250px";
+
+  // =======================
+  // TAMBAHKAN KE MAP
+  // =======================
+
+  new maplibregl.Marker({
+    element: container,
+  })
+    .setLngLat([100.3624642, -0.9242544])
+    .addTo(map3d);
 });
 
 // =======================
@@ -513,57 +544,6 @@ document.getElementById("heatmap")?.addEventListener("click", () => {
     isHeatmapVisible ? "visible" : "none",
   );
 });
-
-const trafficZones = [
-  {
-    name: "Pusat Kota",
-    polygon: [
-      [100.35, -0.95],
-      [100.37, -0.95],
-      [100.37, -0.93],
-      [100.35, -0.93],
-      [100.35, -0.95],
-    ],
-    pattern: {
-      morning: "high",
-      noon: "medium",
-      evening: "high",
-    },
-  },
-];
-
-function getTrafficLevel(hour) {
-  if (hour >= 7 && hour <= 9) return "high";
-  if (hour >= 12 && hour <= 13) return "medium";
-  if (hour >= 17 && hour <= 19) return "high";
-  return "low";
-}
-
-function getColor(level) {
-  if (level === "high") return "#ff2e2e"; // merah padat
-  if (level === "medium") return "#ffa502"; // kuning
-  return "#2ed573"; // hijau lancar
-}
-
-map3d.setPaintProperty("road-layer", "line-color", [
-  "case",
-  ["==", ["get", "traffic"], "high"],
-  "#ff2e2e",
-  ["==", ["get", "traffic"], "medium"],
-  "#ffa502",
-  "#2ed573",
-]);
-
-function simulateTraffic(hour) {
-  const level = getTrafficLevel(hour);
-
-  console.log("Traffic level:", level);
-
-  map3d.setPaintProperty("road-layer", "line-color", getColor(level));
-}
-
-// contoh simulasi tahun tertentu
-simulateTraffic(8); // jam 8 pagi (padat)
 
 // =======================
 // BUTTON LOAD
